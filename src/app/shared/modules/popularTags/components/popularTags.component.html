@@ -1,0 +1,25 @@
+<mc-loading *ngIf="isLoading$ | async"></mc-loading>
+<div class="loading-indicator">
+  <!-- <mat-spinner
+    [diameter]="30"
+    class="example-margin"
+    *ngIf="isLoading$ | async"
+    [mode]="'indeterminate'"
+  >
+  </mat-spinner> -->
+</div>
+<mc-error-message *ngIf="error$ | async"></mc-error-message>
+
+<div class="sidebar" *ngIf="!(popularTags$ && isLoading$ | async)">
+  <p>Popular Tags</p>
+  <div class="tag-list">
+    <a
+      *ngFor="let popularTag of popularTags$ | async"
+      [routerLink]="['/tags', popularTag]"
+      class="tag-default tag-pill"
+      >{{ popularTag }}</a
+    >
+  </div>
+</div>
+
+<!-- [routerLink]="[/tags, popularTag]" -->
